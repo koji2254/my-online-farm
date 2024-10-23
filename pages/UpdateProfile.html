@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/profile.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <script src="https://cdn.tailwindcss.com"></script>
+   <title>Online Farm</title>
+</head>
+<body>
+   <nav class="p-4 border flex justify-between hidden sm:flex">
+      <div class="flex items-center gap-2">
+         <i class="fa-solid fa-chevron-left p-2 text-gray-600"></i>
+         <h1 class="font-extrabold text-xl text-green">Update Profile Profile</h1>
+      </div>
+      
+      <div class="">
+         <!-- <button class="bg-gray-900 rounded px-2 text-gray-100">Profile</button>
+         <button class="bg-gray-300 rounded px-2 text-gray-900">Login</button> -->
+         <button class="bg-gray-100 rounded-full font-bold text-xs p-2 px-2 text-gray-900 text-red-600">Logout</button>
+      </div>
+   </nav>
+
+   <nav class="buttom-nav border-t sm:hidden">
+      <div class="flex justify-between items-center gap-2 px-3">
+         <div class="bottom-nav-card flex flex-col items-center p-2 rounded bg-gray-100 w-full hover:text-green-500 cursor-pointer">
+            <i class="fa-solid fa-store"></i>
+            <h5 class="text-xs p-1">Shop</h5>
+         </div>
+         <div class="bottom-nav-card flex flex-col items-center p-2 rounded bg-gray-100 w-full hover:text-green-500 cursor-pointer">
+            <i class="fa-brands fa-wpexplorer"></i>
+            <h5 class="text-xs p-1">Explore</h5>
+         </div>
+         <div class="bottom-nav-card flex flex-col items-center p-2 rounded bg-gray-100 w-full hover:text-green-500 cursor-pointer">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h5 class="text-xs p-1">Cart <span class="text-red-500">(3)</span></h5>
+         </div>
+         <div class="bottom-nav-card flex flex-col items-center p-2 rounded bg-gray-100 w-full hover:text-green-500 cursor-pointer">
+            <i class="fa-solid fa-user"></i>
+            <h5 class="text-xs p-1">Profile</h5>
+         </div>
+      </div> 
+   </nav>
+
+   <!-- Section -->
+      <div class="section mx-2 mb-10">
+         <div class="border w-full md:w-8/12 mt-10 rounded m-auto p-3">
+            <div class="img-section gap-3">
+               <!-- <div class="bg-gray-700 rounded-full h-20 w-20 flex justify-center items-center">
+                  <i class="fa-solid fa-camera text-white"></i>
+               </div>
+               <div class="mt-2">
+                  <input type="file" class="text-xs" id="profile-img">
+               </div> -->
+            </div>
+            <div class="biodata py-3">
+               <div class="bg-gray-50 p-2">
+                  <p class="text-gray-600 text-xs">Full Name</p>
+                  <p class="font-bold text-sm">
+                     <input type="text" id="full-name" class="p-2 w-full border-gray-200" value="">
+                  </p>
+               </div>
+               <div class="bg-gray-100 mt-2 p-2">
+                  <p class="text-gray-600 text-xs">Email</p>
+                  <p class="font-bold text-sm">
+                     <input type="email" id="email" class="p-2 w-full border-gray-200" value="">
+                  </p>
+               </div>
+               <div class="bg-gray-50 mt-2 p-2">
+                  <p class="text-gray-600 text-xs">User Category</p>
+                  <p class="font-bold text-sm">
+                     <select name="" id="category" class="p-2 w-full border-gray-50">
+                        <option value="Farmer">Farmer</option>
+                        <option value="Customer">Customer</option>
+                     </select>
+                  </p>
+               </div>
+               <div class="bg-gray-100 mt-2 p-2">
+                  <p class="text-gray-600 text-xs">Address</p>
+                  <p class="font-bold text-sm mt-1">
+                     <input type="text" id="address" class="p-2 w-full border-gray-200" value="">
+                  </p>
+               </div>
+               <div class="bg-gray-50 mt-2 p-2">
+                  <p class="text-gray-600 text-xs">Phone</p>
+                  <p class="font-bold text-sm mt-1">
+                     <input type="number" id="phone" class="p-2 w-full border-gray-200" value="">
+                  </p>
+               </div>
+            </div>
+
+            <!-- C T A -->
+            <div class=" flex gap-2 items-center">
+                  <button id="submit-update" class="border p-1.5 rounded bg-green text-white text-sm w-full flex items-center gap-1 flex font-mono justify-center font-bold hover:bg-green-700">Submit Update<i class="fa-solid fa-user"></i></button>
+               
+               <a href="/profile" class="w-full">
+                  <button class="border p-1.5 rounded bg-gray-100 text-green text-sm w-full flex items-center gap-1 flex font-mono justify-center font-bold hover:bg-gray-200">Cancel<i class="fa-solid fa-user"></i></button>
+               </a>
+               
+             </div>
+         </div>
+      </div>
+   <!--  -->
+
+   <script src="../js/profile.js"></script>
+</body>
+</html>
