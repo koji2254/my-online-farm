@@ -40,7 +40,7 @@ const Register = () => {
   return (
     <div>
       <NavBar />
-      <div className="flex mt-20 items-center justify-center">
+      <div className="flex mt-10 mb-20 items-center justify-center">
         <div className="w-96 p-3 shadow rounded border">
           <form onSubmit={handleSubmit} className="w-80 m-auto">
             <div className="w-full font-bold text-green-600 text-lg font-sans uppercase text-center">
