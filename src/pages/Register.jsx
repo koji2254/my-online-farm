@@ -7,6 +7,9 @@ const Register = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
+    address: '',
+    contact: '',
+    role: '',
     password: '',
     confirmPassword: ''
   });
@@ -63,6 +66,37 @@ const Register = () => {
                 className="font-semibold bg-green-50 border border-gray-200 p-3 text-xs w-full rounded"
               />
             </div>
+            <div className="mt-4">
+                <select className='w-full rounded border-green-500 p-2 border border-gray-500' onChange={handleChange} name="role" id="" value={formData.role}>
+                    <option>Select Role</option>
+                    <option value="farmer">farmer</option>
+                    <option value="customer">customer</option>
+                </select>
+              
+            </div>
+            {/*  */}
+            
+            <div className="mt-4">
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                value={formData.address}
+                onChange={handleChange}
+                className="font-semibold bg-green-50 border border-gray-200 p-3 text-xs w-full rounded"
+              />
+            </div>
+            <div className="mt-4">
+              <input
+                type="phone"
+                name="contact"
+                placeholder="Contact"
+                value={formData.contact}
+                onChange={handleChange}
+                className="font-semibold bg-green-50 border border-gray-200 p-3 text-xs w-full rounded"
+              />
+            </div>
+            {/*  */}
             <div className="mt-4">
               <input
                 type="password"
