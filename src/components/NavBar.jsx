@@ -7,21 +7,21 @@ const NavBar = () => {
     <nav className="p-4 border flex justify-between">
       <div className="flex items-center gap-2">
          
-         <h1 className="font-extrabold text-xl text-green uppercase font-mono">Help the Farmers</h1>
+         <h1 className="font-extrabold text-xl text-green uppercase font-mono">Farmers</h1>
       </div>
       
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-1 items-center">
         <NavLink to='/my-profile'>
-            <button className="bg-gray-900 rounded-full font-bold text-xs p-2 px-2 text-gray-100 flex gap-1 items-center">
+            <button className="font-bold text-xs p-2 px-1 text-gray-900 flex gap-1 items-center">
                 <i class="fa-solid fa-user"></i>
                 Profile
             </button>
         </NavLink>
         <NavLink to='/login'>
-            <button className="bg-gray-900 rounded-full font-bold text-xs p-2 px-2 text-gray-100">Login</button>
+            <button className="font-bold text-xs p-2 px-1 text-gray-900">Login</button>
         </NavLink>
         <NavLink to='/login'>
-         <button className="bg-gray-100 rounded-full font-bold text-xs p-2 px-2 text-gray-900 text-red-600">Logout</button>
+         <button className="bg-gray-100 rounded-full font-bold text-xs p-2 px-1 text-gray-900 text-red-600">Logout</button>
         </NavLink>
          
       </div>
