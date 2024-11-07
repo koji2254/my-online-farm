@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
 import { NavLink } from 'react-router-dom';
+import { API_BASE_URL } from '../assets/Proxy';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +35,21 @@ const Register = () => {
         return alert('Passwords do not match')
     }
 
-    console.log(formData)
+    axios.post(`${API_BASE_URL}/register`, formData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      console.log(response)
+
+      alert('Done')
+    })
+    .catch((error) => {
+      console.log(error.response.data.message)
+    })
+
+
   };
 
   return (
