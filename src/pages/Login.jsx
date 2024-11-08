@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../assets/Proxy';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -26,7 +29,7 @@ const Login = () => {
         return alert('Pls all inputs')
     }
 
-    axios.post(`${API_BASE_URL}/login`, formData, {
+    axios.post(`${API_BASE_URL}/user/login`, formData, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -36,11 +39,27 @@ const Login = () => {
 
       const { token, message } = response.data
 
-      localStorage.setItem('user_token', response.data)
-      alert(message)
+      if(message === 'Login successfully' && token !== null){
+
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.userId;
+
+        console.log('User ID:', userId);
+
+        navigate('/my-profile')
+        
+        localStorage.setItem('frm_token', userId)
+        
+        alert(message)
+     
+      }else {
+        return alert('Error Occured')
+      }
+
+      
     })
     .catch((error) => {
-      console.log(error.data.response.message)
+      console.log(error.response.data)
     })
 
 

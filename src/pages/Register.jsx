@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../assets/Proxy';
+import { jwtDecode } from 'jwt-decode';
 
 const Register = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
     address: '',
     contact: '',
@@ -27,7 +29,7 @@ const Register = () => {
 
     e.preventDefault()
 
-    if(!formData.email || !formData.fullName){
+    if(!formData.email || !formData.name){
         return alert('Pls all inputs')
     }
 
@@ -35,7 +37,11 @@ const Register = () => {
         return alert('Passwords do not match')
     }
 
-    axios.post(`${API_BASE_URL}/register`, formData, {
+    const { name, email, password, role, address, contact } = formData
+
+    const mainData = { name, email, password, role, address, contact }
+
+    axios.post(`${API_BASE_URL}/user/register`, mainData, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -43,10 +49,29 @@ const Register = () => {
     .then((response) => {
       console.log(response)
 
-      alert('Done')
+      const { token, user } = response.data
+
+      if(token !== null && user){
+
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.userId;
+
+        console.log('User ID:', userId);
+
+        navigate('/my-profile')
+        
+        localStorage.setItem('frm_token', userId)
+        
+        alert('Account Created')
+     
+      }else {
+        return alert('Error Occured')
+      }
+
+
     })
     .catch((error) => {
-      console.log(error.response.data.message)
+      console.log(error.response)
     })
 
 
@@ -64,9 +89,9 @@ const Register = () => {
             <div className="mt-4">
               <input
                 type="text"
-                name="fullName"
+                name="name"
                 placeholder="Full Name"
-                value={formData.fullName}
+                value={formData.name}
                 onChange={handleChange}
                 className="font-semibold bg-green-50 border border-gray-200 p-3 text-xs w-full rounded"
               />

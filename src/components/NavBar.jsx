@@ -1,8 +1,20 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+
 
 const NavBar = () => {
-  return (
+   const navigate = useNavigate()
+   const frm_token = localStorage.getItem('frm_token');
+
+   const logoutUser = () => {
+      localStorage.setItem('frm_token', '')
+
+      navigate('/login')
+
+   }
+
+
+   return (
     <>
     <nav className="p-4 border flex justify-between">
       <div className="flex items-center gap-2">
@@ -11,18 +23,32 @@ const NavBar = () => {
       </div>
       
       <div className="flex gap-1 items-center">
-        <NavLink to='/my-profile'>
-            <button className="font-bold text-xs p-2 px-1 text-gray-900 flex gap-1 items-center">
-                <i class="fa-solid fa-user"></i>
-                Profile
-            </button>
-        </NavLink>
-        <NavLink to='/login'>
-            <button className="font-bold text-xs p-2 px-1 text-gray-900">Login</button>
-        </NavLink>
-        <NavLink to='/login'>
-         <button className="bg-gray-100 rounded-full font-bold text-xs p-2 px-1 text-gray-900 text-red-600">Logout</button>
-        </NavLink>
+         {frm_token ? 
+         <>
+            <NavLink to='/my-profile'>
+               <button className="font-bold text-xs p-2 px-1 text-gray-900 flex gap-1 items-center">
+                  <i class="fa-solid fa-user"></i>
+                  Profile
+               </button>
+            </NavLink>
+            {/* <NavLink to='/logout'> */}
+               <button onClick={logoutUser} className="bg-gray-100 rounded-full font-bold text-xs p-2 px-1 text-gray-900 text-red-600">Logout</button>
+            {/* </NavLink> */}
+         </>
+         :
+         <>
+            <NavLink to='/login'>
+                  <button className="font-bold text-xs p-2 px-1 text-gray-900">Login</button>
+            </NavLink>
+            <NavLink to='/register'>
+                  <button className="font-bold text-xs p-2 px-1 text-gray-900">Register</button>
+            </NavLink>
+         </>
+        }
+        
+        { }
+        
+        
          
       </div>
    </nav>

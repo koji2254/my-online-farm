@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../components/NavBar'
 import PageTitle from '../components/PageTitle'
+import axios from 'axios'
+import { API_BASE_URL } from '../assets/Proxy'
 
 const MyProfile = () => {
+
+   const [user, setUser] = useState([])
+
+   useEffect(() => {
+      const frm_token = localStorage.getItem('frm_token')
+
+      axios.get(`${API_BASE_URL}/user/${frm_token}`)
+      .then((response) => {
+         console.log(response.data.user)
+
+         setUser(response.data.user)
+      })
+      .catch((error) => {
+         console.log(error.response)
+      })
+
+   }, [])
+
   return (
     <div>
         <NavBar />
@@ -18,23 +38,23 @@ const MyProfile = () => {
             <div class="biodata py-3">
                <div class="bg-gray-50 p-2">
                   <p class="text-gray-600 text-xs">Full Name</p>
-                  <p class="font-bold text-sm">James Koji</p>
+                  <p class="font-bold text-sm">{user.name}</p>
                </div>
                <div class="bg-gray-100 mt-2 p-2">
                   <p class="text-gray-600 text-xs">Email</p>
-                  <p class="font-bold text-sm">jjameskoji@gmail.com</p>
+                  <p class="font-bold text-sm">{user.email}</p>
                </div>
                <div class="bg-gray-50 mt-2 p-2">
                   <p class="text-gray-600 text-xs">User Category</p>
-                  <p class="font-bold text-sm">Farmer</p>
+                  <p class="font-bold text-sm">{user.role}</p>
                </div>
                <div class="bg-gray-100 mt-2 p-2">
                   <p class="text-gray-600 text-xs">Address</p>
-                  <p class="font-bold text-sm mt-1">jos utan</p>
+                  <p class="font-bold text-sm mt-1">{user.address}</p>
                </div>
                <div class="bg-gray-50 mt-2 p-2">
                   <p class="text-gray-600 text-xs">Phone</p>
-                  <p class="font-bold text-sm mt-1">+234 7061856629</p>
+                  <p class="font-bold text-sm mt-1">{user.contact}</p>
                </div>
             </div>
 
