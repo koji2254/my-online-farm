@@ -131,7 +131,7 @@ const Login = () => {
               type="submit"
               className="p-2 text-white rounded font-normal mt-3 bg-green-600 w-full hover:bg-green-700"
             >
-              { loading ? <LoadingBtn /> : 'Login' }
+              { loading ? <LoadingBtn text='logging in...' /> : 'Login' }
               
             </button>
             <p className="mt-2 text-center">

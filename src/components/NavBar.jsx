@@ -19,7 +19,7 @@ const NavBar = () => {
     <nav className="p-4 border flex justify-between">
       <div className="flex items-center gap-2">
          
-         <h1 className="font-extrabold text-xl text-green uppercase font-mono">Farmers</h1>
+         <h1 className="font-extrabold text-lg text-green-700 uppercase">Online Farm</h1>
       </div>
       
       <div className="flex gap-1 items-center">
