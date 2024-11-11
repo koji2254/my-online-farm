@@ -62,10 +62,9 @@ const MyProfile = () => {
                <a href="./UpdateProfile.html">
                   <button disabled class="border p-1.5 rounded bg-green text-white text-sm w-full flex items-center gap-1 flex font-mono justify-center font-bold hover:bg-green-700">Edit Profile <i class="fa-solid fa-user"></i></button>
                </a>
-               <a href="my-farm">
+               { user && user.role === 'farmer' ? <a href="my-farm">
                   <button disabled class="border p-1.5 rounded bg-gray-100 text-green text-sm w-full flex items-center gap-1 flex font-mono justify-center font-bold hover:bg-gray-200">My Farm<i class="fa-solid fa-user"></i></button>
-               </a>
-               
+               </a> : ''}
              </div>
          </div>
       </div>

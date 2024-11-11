@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../assets/Proxy';
 import { jwtDecode } from 'jwt-decode';
+import Alert from '../components/Alert';
 
 const Register = () => {
   const navigate = useNavigate()
